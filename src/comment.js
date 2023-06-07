@@ -20,6 +20,7 @@ export const comment = async () => {
 
     $allReset.addEventListener('click', () => {
         localStorage.clear();
+        window.location.reload();
     });
 
     $form.addEventListener('submit', e => {
