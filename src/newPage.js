@@ -10,8 +10,8 @@ const $div = document.querySelector('#div');
 
 document.addEventListener('DOMContentLoaded', () => {
     movieInfo();
-    PostingCmt();
-    comment();
+    PostingCmt(); // 영화 상세 페이지에서 댓글 달면 로컬 스토리지에 저장되는 부분
+    comment(); // 코멘트 입력과 등록 이벤트 관련된 내용은 이 함수에 다 있음
 })
 
 async function movieInfo() {
