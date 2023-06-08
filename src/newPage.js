@@ -9,6 +9,7 @@ const $h1 = document.querySelector('#h1');
 
 document.addEventListener('DOMContentLoaded', () => {
     movieInfo();
+
     PostingCmt();
     comment();
 });
@@ -23,6 +24,7 @@ $div.addEventListener('click', e => {
     }
 });
 
+
 async function movieInfo() {
     const moviesInfo = await respondApi('ko-KR');
 
@@ -32,4 +34,7 @@ async function movieInfo() {
                     <p id="title">${selectMovie['title']}</p>
                     <p id="overview">${selectMovie['overview']}</p>
                     <p id="vote-avg">${selectMovie['vote_average']}</p>`;
+
+
 }
+
