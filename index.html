@@ -16,6 +16,9 @@
         </header>
         <form id="search-form">
             <label>
+                <div>
+                    <div id="result"></div>
+                </div>
                 <span>영화 검색</span>
                 <input id="search-input" type="text" placeholder="영화 제목을 검색해 보세요" autocomplete="off" />
             </label>
@@ -24,6 +27,16 @@
         <hr />
         <div id="modal"></div>
         <section>
+            <script src="src/sort.js" type="module"></script>
+
+            <div class="dropdown">
+                <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">영화 제목 정렬</button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item1" id="dropdown-item1" href="#" onclick="sort1">오름차순</a></li>
+                    <li><a class="dropdown-item2" id="dropdown-item2" href="#" onclick="sort2">내림차순</a></li>
+                </ul>
+            </div>
+
             <div id="post-div1">
                 <ul id="card-list"></ul>
             </div>

@@ -31,12 +31,22 @@ export const comment = async () => {
     $form.addEventListener('submit', e => {
         e.preventDefault();
 
-        localStorage.setItem('id', $id.value);
-        localStorage.setItem('pwd', $pwd.value);
+        if (!$id.value && !$pwd.value) {
+            // 비어있다면 alert창 출력
+            alert('ID와 PW를 입력해주세요.');
+        } else if (!$id.value) {
+            alert('ID를 입력해주세요.');
+        } else if (!$pwd.value) {
+            alert('PW를 입력해주세요.');
+        } else {
+            // ID와 PW값이 '' 비어있지않다면 setItem
+            localStorage.setItem('id', $id.value);
+            localStorage.setItem('pwd', $pwd.value);
 
-        $id.value = '';
-        $pwd.value = '';
-        $form.style.display = 'none';
+            $id.value = '';
+            $pwd.value = '';
+            $form.style.display = 'none';
+        }
     });
 
     $txt.addEventListener('click', () => {
@@ -50,17 +60,34 @@ export const comment = async () => {
     /**등록 눌러서 댓글이 등록되게 하는 기능 */
     $form2.addEventListener('submit', e => {
         e.preventDefault();
-
-        const cmtSto = Object.keys(localStorage)
-            .filter(item => !isNaN(item))
-            .sort((a, b) => b - a);
-        let priKey = 0;
-
-        if (!cmtSto.includes('1')) {
-            priKey = 1;
+      
+        if (!$txt.value) {
+            // 비어있다면 alert창 출력
+            alert('댓글을 입력해주세요');
         } else {
-            priKey = +cmtSto[0] + 1;
+            const cmtSto = Object.keys(localStorage)
+                .filter(item => !isNaN(item))
+                .sort((a, b) => b - a);
+            let priKey = 0;
+
+            if (!cmtSto.includes('1')) {
+                priKey = 1;
+            } else {
+                priKey = +cmtSto[0] + 1;
+            }
+
+            const obj = {
+                priKey: priKey,
+                userId: localStorage.getItem('id'),
+                cmt: $txt.value,
+                movieId: idParams
+            };
+            // 코멘트 입력 칸이 비어있지 않다면 setItem
+            localStorage.setItem(priKey, JSON.stringify(obj));
+
+            window.location.reload();
         }
+
 
         const obj = {
             id: localStorage.getItem('id'),
@@ -114,7 +141,7 @@ export function PostingCmt() {
     const cmtSto = Object.keys(localStorage)
         .filter(item => !isNaN(item))
         .sort((a, b) => b - a);
-    console.log(cmtSto);
+
 
     if (!localStorage['id']) {
         $reset.style.display = 'none';
@@ -124,6 +151,7 @@ export function PostingCmt() {
 
     $cmt.innerHTML = cmtSto
         .map(item => {
+
             const id = JSON.parse(localStorage.getItem(item))['id']; //JSON.parse: string 타입으로 로컬스토리지에 저장했던 데이터를 객체 타입으로 변환함
             const cmt = JSON.parse(localStorage.getItem(item))['cmt'];
             const movieId = JSON.parse(localStorage.getItem(item))['movieId'];
@@ -150,6 +178,7 @@ export function PostingCmt() {
 
                 // 추가, 수정 버튼을 눌러서 나오는 텍스트 에어리어의 placeholder는
                 // 기존에 등록되었던 댓글이어야 함
+
             }
         })
         .join('');
