@@ -23,6 +23,8 @@ header {
     direction: row;
     justify-content: center;
     align-items: center;
+
+    padding-left: 0;
 }
 
 #search-form > label {
@@ -30,7 +32,7 @@ header {
 }
 
 #card-list {
-    margin: 0 auto 0 auto;
+    margin: 0 auto 50px auto;
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -159,4 +161,8 @@ header {
 
 #overview {
     font-weight: 300;
+}
+
+.movie-title {
+    text-align: center;
 }

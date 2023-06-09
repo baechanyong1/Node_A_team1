@@ -4,52 +4,13 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <style>
-            #form {
-                display: none;
-            }
-
-            #txt {
-                outline: none;
-            }
-
-            .cmt-li {
-                list-style: none;
-
-                border: 1px solid;
-                margin: 10px;
-            }
-
-
-            #all-reset {
-                margin-bottom: 3px;
-            }
-
-            #id {
-                margin-bottom: 5px;
-
-            #h1 {
-                cursor: pointer;
-            }
-
-            #img {
-                cursor: pointer;
-            }
-
-            .cmt-review {
-                border: none;
-                outline: none;
-                resize: none;
-
-            }
-        </style>
+        <link rel="stylesheet" href="style/newPage.css" />
         <script src="src/newPage.js" type="module"></script>
         <title>Document</title>
     </head>
 
     <body>
-
-        <h1 id="h1">새로운 페이지</h1>
+        <h1 id="h1">돌아가기</h1>
 
         <div id="div"></div>
         <button id="reset">로그아웃</button>
@@ -60,10 +21,10 @@
             <button id="btn">입력</button>
         </form>
         <form id="form2">
-
             <textarea id="txt" cols="70" rows="10" placeholder="댓글을 입력하세요." readonly></textarea>
             <button id="btn2">등록</button>
         </form>
+        <div id="modal"></div>
 
         <ul id="cmt"></ul>
     </body>

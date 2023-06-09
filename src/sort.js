@@ -3,8 +3,6 @@ const $sort = document.querySelector('#dropdownMenuButton1');
 const $sort1 = document.querySelector('#dropdown-item1');
 const $sort2 = document.querySelector('#dropdown-item2');
 
-console.log($sort1);
-
 // consol.log(<p class = "movie-title"> "제목")
 $sort.addEventListener('click', () => {
     const $movie_title = document.querySelectorAll('.movie-title');
